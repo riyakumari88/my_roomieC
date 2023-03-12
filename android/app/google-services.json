@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "88123645807",
+    "project_id": "my-roomie-f996f",
+    "storage_bucket": "my-roomie-f996f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88123645807:android:37709e1cbf8071cb28129a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88123645807-vhcontpn1uol7ompb00ve9c6onb35b22.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAGC4ZVb-pFj-80Rd5h6b0JvEDijgpwCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88123645807-vhcontpn1uol7ompb00ve9c6onb35b22.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
