@@ -177,7 +177,7 @@ class _Chat_ScreenState extends State<Chat_Screen> {
                   final String message =
                       Encryption().decrypted(chat.content, "1234567891234567");
                   return ChatBubble(
-                      text: chat.content,
+                      text: message,
                       isCurrentUser:
                           chat.idFrom == currentUserId ? true : false);
                 },
