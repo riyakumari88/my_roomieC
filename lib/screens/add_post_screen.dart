@@ -10,6 +10,9 @@ import 'package:provider/provider.dart';
 
 import '../models/user.dart';
 import '../provider/user_provider.dart';
+import '../responsive/mobile_screen_layout.dart';
+import '../responsive/responsive_layout.dart';
+import '../responsive/web_screen_layout.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);
@@ -21,15 +24,32 @@ class AddPostScreen extends StatefulWidget {
 class _AddPostScreenState extends State<AddPostScreen> {
   Uint8List? _file;
   final TextEditingController _descriptionController = TextEditingController();
+  bool _isLoding = false;
 
   void postImage(String uid, String username, String profImage) async {
+    setState(() {
+      _isLoding = true;
+    });
     try {
       String res = await FirestoreMethods().uploadPost(
           _descriptionController.text, _file!, uid, username, profImage);
+      setState(() {
+        _isLoding = false;
+      });
       if (res == "success") {
         showSnackBar(context, 'Posted');
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (context) => const ResponsiveLayout(
+              webScreenLayout: WebScreenLayout(),
+              mobileScreenLayout: MobileScreenLayout(),
+            ),
+          ),
+        );
       }
-    } catch (e) {}
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
   }
 
   _selectImage(BuildContext context) async {
@@ -98,8 +118,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
               backgroundColor: mobileBackgroundColor,
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back),
-                onPressed: () =>
-                    postImage(user.uid, user.username, user.photoUrl),
+                onPressed: () => AddPostScreen(),
               ),
               title: const Text("Post to"),
               actions: [
