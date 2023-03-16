@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/resources/fire_store_methods.dart';
+import 'package:flutter_application_1/screens/chat_list.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/utils.dart';
 import 'package:flutter_application_1/widgets/text_field_input.dart';
@@ -13,6 +14,7 @@ import '../provider/user_provider.dart';
 import '../responsive/mobile_screen_layout.dart';
 import '../responsive/responsive_layout.dart';
 import '../responsive/web_screen_layout.dart';
+import 'home.dart';
 
 class AddPostScreen extends StatefulWidget {
   const AddPostScreen({Key? key}) : super(key: key);
@@ -109,6 +111,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
     return _file == null
         ? Center(
             child: IconButton(
+              iconSize: 30,
+              splashRadius: 50,
+              splashColor: Colors.lightGreenAccent,
               icon: Icon(Icons.upload),
               onPressed: () => _selectImage(context),
             ),

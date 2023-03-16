@@ -17,10 +17,15 @@ class picAdd extends StatefulWidget {
 class _picAddState extends State<picAdd> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: IconButton(
-      icon: const Icon(Icons.upload),
-      onPressed: () {},
-    ));
+    return Column(
+      children: [
+        Center(
+            child: IconButton(
+          icon: const Icon(Icons.upload),
+          onPressed: () {},
+        )),
+        Text("Add Pic")
+      ],
+    );
   }
 }

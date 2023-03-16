@@ -4,6 +4,8 @@ import 'package:flutter_application_1/screens/add_post_screen.dart';
 import 'package:flutter_application_1/screens/chat_list.dart';
 import 'package:flutter_application_1/screens/chatpage.dart';
 import 'package:flutter_application_1/screens/home.dart';
+
+import '../screens/user_profile.dart';
 // import 'package:flutter_application_1/screens/feed_screen.dart';
 // import 'package:flutter_application_1/screens/profile_screen.dart';
 // import 'package:flutter_application_1/screens/search_screen.dart';
@@ -16,7 +18,7 @@ List<Widget> homeScreenItems = [
   Home(),
   HomePage(),
   AddPostScreen(),
-  Text('profile'),
+  UserProfile(),
 
   //const Text('notifications'),
   // ProfileScreen(
