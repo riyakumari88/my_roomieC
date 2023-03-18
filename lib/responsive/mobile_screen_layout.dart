@@ -17,7 +17,8 @@ class MobileScreenLayout extends StatefulWidget {
 }
 
 class _MobileScreenLayoutState extends State<MobileScreenLayout> {
-  // String username = "";
+  // String specifier = UserProvider().getspecifier;
+
   // @override
   // void initState() {
   //   super.initState();
@@ -58,51 +59,109 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        children: homeScreenItems,
-        // physics: NeverScrollableScrollPhysics(),
-        controller: pageController,
-        onPageChanged: onPageChanged,
-      ),
-      bottomNavigationBar: CupertinoTabBar(
-        //height: 50,
-        iconSize: 25,
-        height: 70,
-        backgroundColor: Colors.white30,
-        activeColor: Colors.black,
-        items: [
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                color: _page == 0 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
-              ),
-              label: '',
-              backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.messenger_rounded,
-                color: _page == 1 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
-              ),
-              label: '',
-              backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.upload_file_rounded,
-                color: _page == 2 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
-              ),
-              label: '',
-              backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
-          BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                color: _page == 3 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
-              ),
-              label: '',
-              backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
-        ],
-        onTap: navigationTapped,
-      ),
-    );
+    model.User user = Provider.of<UserProvider>(context).getUser;
+    if (user.specifier == 'RoomProvider') {
+      return Scaffold(
+        body: PageView(
+          children: homeScreenItemsprovider,
+          // physics: NeverScrollableScrollPhysics(),
+          controller: pageController,
+          onPageChanged: onPageChanged,
+        ),
+        bottomNavigationBar: CupertinoTabBar(
+          //height: 50,
+          iconSize: 25,
+          height: 70,
+          backgroundColor: Colors.white30,
+          activeColor: Colors.black,
+          items: [
+            // BottomNavigationBarItem(
+            //     icon: Icon(
+            //       Icons.home,
+            //       color:
+            //           _page == 0 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+            //     ),
+            //     label: '',
+            //     backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.messenger_rounded,
+                  color:
+                      _page == 0 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                ),
+                label: '',
+                backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.upload_file_rounded,
+                  color:
+                      _page == 1 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                ),
+                label: '',
+                backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  color:
+                      _page == 2 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                ),
+                label: '',
+                backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
+          ],
+          onTap: navigationTapped,
+        ),
+      );
+    } else {
+      return Scaffold(
+        body: PageView(
+          children: homeScreenItemsSeecker,
+          // physics: NeverScrollableScrollPhysics(),
+          controller: pageController,
+          onPageChanged: onPageChanged,
+        ),
+        bottomNavigationBar: CupertinoTabBar(
+          //height: 50,
+          iconSize: 25,
+          height: 70,
+          backgroundColor: Colors.white30,
+          activeColor: Colors.black,
+          items: [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                  color:
+                      _page == 0 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                ),
+                label: '',
+                backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.messenger_rounded,
+                  color:
+                      _page == 1 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                ),
+                label: '',
+                backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
+            // BottomNavigationBarItem(
+            //     icon: Icon(
+            //       Icons.upload_file_rounded,
+            //       color:
+            //           _page == 2 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+            //     ),
+            //     label: '',
+            //     backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.person,
+                  color:
+                      _page == 2 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                ),
+                label: '',
+                backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
+          ],
+          onTap: navigationTapped,
+        ),
+      );
+    }
   }
 }

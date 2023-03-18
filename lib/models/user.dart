@@ -10,6 +10,7 @@ class User {
   final String gender;
   final String budget;
   final String language;
+  final String specifier;
 
   const User({
     required this.username,
@@ -21,6 +22,7 @@ class User {
     required this.gender,
     required this.budget,
     required this.language,
+    required this.specifier,
   });
 
   static User fromSnap(DocumentSnapshot snap) {
@@ -36,6 +38,7 @@ class User {
       gender: snapshot["gender"],
       budget: snapshot["budget"],
       language: snapshot["language"],
+      specifier: snapshot["specifier"],
     );
   }
 
@@ -49,5 +52,6 @@ class User {
         "gender": gender,
         "budget": budget,
         "language": language,
+        "specifier": specifier,
       };
 }

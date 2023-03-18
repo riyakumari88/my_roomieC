@@ -8,7 +8,7 @@ import 'package:flutter_application_1/screens/login_screen.dart';
 //import 'package:flutter_application_1/screens/signup_screen.dart';
 import 'package:flutter_application_1/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:flutter_application_1/responsive/mobile_screen_layout.dart';
+import 'package:flutter_application_1/responsive/mobile_screen_layout_seeker.dart';
 import 'package:flutter_application_1/responsive/web_screen_layout.dart';
 import 'package:flutter_application_1/utils/colors.dart';
 import 'package:flutter_application_1/utils/global_variables.dart';
@@ -16,8 +16,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_application_1/widgets/text_field_input.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
-//import 'user_registration.dart';
-// ignore: prefer_typing_uninitialized_variables
+import '../responsive/mobile_screen_layout.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -42,9 +41,9 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _genderController = TextEditingController();
   final TextEditingController _budgetController = TextEditingController();
-  //final TextEditingController _specifyController = TextEditingController();
-
-  //List<bool> isSelected = [true, false];
+  // final TextEditingController _specifyController = TextEditingController();
+  bool _isTenantChecked = false;
+  bool _isLandlordChecked = false;
   Uint8List? _image;
   bool _isLoding = false;
   @override
@@ -54,6 +53,7 @@ class _SignupScreenState extends State<SignupScreen> {
     _passwordController.dispose();
     _boiController.dispose();
     _usernameController.dispose();
+    // _specifyController.dispose();
   }
 
   void selectImage() async {
@@ -67,24 +67,38 @@ class _SignupScreenState extends State<SignupScreen> {
     setState(() {
       _isLoding = true;
     });
-    String res = await AuthMethods().signUpUser(
-      email: _emailController.text,
-      password: _passwordController.text,
-      username: _usernameController.text,
-      bio: _boiController.text,
-      file: _image!,
-      language: _languageController.text,
-      age: _ageController.text,
-      gender: _genderController.text,
-      budget: _budgetController.text,
-      //specifer: _specifyController.text,
-    );
-    setState(() {
-      _isLoding = false;
-    });
-    if (res != 'sucsess') {
-      showSnackBar(context, res);
+    String res;
+    if (_isLandlordChecked) {
+      //specifier = 'RoomProvider';
+      res = await AuthMethods().signUpUser(
+        email: _emailController.text,
+        password: _passwordController.text,
+        username: _usernameController.text,
+        bio: _boiController.text,
+        file: _image!,
+        language: _languageController.text,
+        age: _ageController.text,
+        gender: _genderController.text,
+        budget: _budgetController.text,
+        specifer: 'RoomProvider',
+      );
     } else {
+      //specifier = 'RoomSearcher';
+      res = await AuthMethods().signUpUser(
+        email: _emailController.text,
+        password: _passwordController.text,
+        username: _usernameController.text,
+        bio: _boiController.text,
+        file: _image!,
+        language: _languageController.text,
+        age: _ageController.text,
+        gender: _genderController.text,
+        budget: _budgetController.text,
+        specifer: 'RoomSeeker',
+      );
+    }
+    if (res == 'success') {
+      print('success');
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const ResponsiveLayout(
@@ -93,7 +107,12 @@ class _SignupScreenState extends State<SignupScreen> {
           ),
         ),
       );
+    } else {
+      showSnackBar(context, res);
     }
+    setState(() {
+      _isLoding = false;
+    });
   }
 
   @override
@@ -221,15 +240,25 @@ class _SignupScreenState extends State<SignupScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  ToggleSwitch(
-                    labels: ['Room', 'Roommate'],
-                    iconSize: BorderSide.strokeAlignCenter,
-                    fontSize: 22,
-                    minWidth: 150,
-                    minHeight: 60,
-                    cornerRadius: 20,
-                    activeBgColor: [Colors.green, Colors.green],
-                    inactiveBgColor: Color.fromARGB(15, 15, 15, 100),
+                  CheckboxListTile(
+                    title: const Text('Searching for room'),
+                    value: _isTenantChecked,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _isTenantChecked = value!;
+                        _isLandlordChecked = false;
+                      });
+                    },
+                  ),
+                  CheckboxListTile(
+                    title: const Text('Searching for roommate'),
+                    value: _isLandlordChecked,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _isLandlordChecked = value!;
+                        _isTenantChecked = false;
+                      });
+                    },
                   ),
                   const SizedBox(
                     height: 10,

@@ -35,6 +35,7 @@ class AuthMethods {
     required String age,
     required String gender,
     required String budget,
+    required String specifer,
     //required String specifer,
   }) async {
     String res = "Some error Occurred";
@@ -44,7 +45,8 @@ class AuthMethods {
           username.isNotEmpty ||
           bio.isNotEmpty ||
           file != null ||
-          language.isNotEmpty) {
+          language.isNotEmpty ||
+          specifer.isNotEmpty) {
         // registering user in auth with email and password
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
           email: email,
@@ -74,7 +76,7 @@ class AuthMethods {
           gender: gender,
           budget: budget,
           language: language,
-          //specifer: specifer,
+          specifier: specifer,
         );
 
         //adding user in our database

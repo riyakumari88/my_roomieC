@@ -43,6 +43,16 @@ class _HomePageState extends State<HomePage> {
         automaticallyImplyLeading: false,
         backgroundColor: Color.fromARGB(226, 97, 231, 124),
         centerTitle: true,
+        actions: <Widget>[
+          ElevatedButton(
+            //textColor: Colors.white,
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut();
+            },
+            child: Text("Signout"),
+            //shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
+          ),
+        ],
       ),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance

@@ -12,7 +12,7 @@ import '../screens/user_profile.dart';
 
 const webScreenSize = 600;
 
-List<Widget> homeScreenItemsProvider = [
+List<Widget> homeScreenItemsprovider = [
   //const FeedScreen(),
   //const SearchScreen(),
   //Home(),
