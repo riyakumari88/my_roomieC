@@ -1,31 +1,54 @@
 import 'package:camera/camera.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_application_1/models/user.dart' as model;
 
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/user_provider.dart';
+import '../screens/user_info.dart';
 import '../utils/colors.dart';
 import '../utils/global_variables.dart';
 
 class NextPage extends StatelessWidget {
   final snap;
+
   const NextPage({
     Key? key,
     required this.snap,
   }) : super(key: key);
   // List data = [
+
   @override
   Widget build(BuildContext context) {
+    String uid1 = snap['uid'];
+    model.User user1 = Provider.of<UserProvider>(context).getUser;
+    // final user11 = FirebaseFirestore.instance
+    //     .collection('users')
+    //     .where('uid', isEqualTo: uid1)
+    //     .get();
+    // model.User user1 = model.User.fromSnap(user11 as DocumentSnapshot<Object?>);
     return Container(
+      margin: const EdgeInsets.fromLTRB(8, 10, 8, 8),
       // boundary needed for web
       decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.shade600,
+              spreadRadius: 2,
+              blurRadius: 10.0,
+              // spreadRadius: 2.0,
+            )
+          ],
           border: Border.all(
             color: primaryColor,
           ),
           color: primaryColor,
-          borderRadius: BorderRadius.circular(10)),
+          borderRadius: BorderRadius.circular(30)),
       padding: const EdgeInsets.symmetric(
         vertical: 10,
       ),
@@ -124,9 +147,46 @@ class NextPage extends StatelessWidget {
                 width: double.infinity,
                 child: Image.network(
                   snap['postUrl'],
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 0, top: 250),
+                  child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => UserInformation(
+                              uid: uid1,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: 50,
+                        // width: m,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Continue',
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.circular(18),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.white,
+                                spreadRadius: 2,
+                                blurRadius: 20.0,
+                                // spreadRadius: 2.0,
+                              )
+                            ]),
+                      )))
               // AnimatedOpacity(
               //   duration: const Duration(milliseconds: 200),
               //   opacity: isLikeAnimating ? 1 : 0,

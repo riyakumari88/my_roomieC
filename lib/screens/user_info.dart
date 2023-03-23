@@ -7,14 +7,57 @@ import 'package:flutter_application_1/provider/user_provider.dart';
 import 'package:flutter_application_1/resources/auth_methods.dart';
 import 'package:provider/provider.dart';
 
-class UserProfile extends StatelessWidget {
-  const UserProfile({
-    Key? key,
-  }) : super(key: key);
+import 'chatpage.dart';
+
+class UserInformation extends StatefulWidget {
+  //final model.User userdata;
+  String uid;
+  UserInformation({Key? key, required this.uid}) : super(key: key);
+  @override
+  State<UserInformation> createState() => _UserInformationState();
+}
+
+class _UserInformationState extends State<UserInformation> {
+  // final String uid;
+  String email = '';
+  String uid = '';
+  String photoUrl = '';
+  String username = '';
+  String bio = '';
+  String age = '';
+  String gender = '';
+  String budget = '';
+  String language = '';
+  String specifier = '';
+  String uid21 = '';
+  // String get uid1 => uid!;
+  // String get getspecifier => specifier!;
+
+  @override
+  void initState() {
+    super.initState();
+    getUsername();
+  }
+
+  void getUsername() async {
+    var uid1 = widget.uid;
+    DocumentSnapshot snap =
+        await FirebaseFirestore.instance.collection('users').doc(uid1).get();
+    setState(() {
+      username = (snap.data() as Map<String, dynamic>)["username"];
+      email = (snap.data() as Map<String, dynamic>)["email"];
+      age = (snap.data() as Map<String, dynamic>)["age"];
+      bio = (snap.data() as Map<String, dynamic>)["bio"];
+      photoUrl = (snap.data() as Map<String, dynamic>)["photoUrl"];
+      gender = (snap.data() as Map<String, dynamic>)["gender"];
+      budget = (snap.data() as Map<String, dynamic>)["budget"];
+      language = (snap.data() as Map<String, dynamic>)["language"];
+      uid21 = (snap.data() as Map<String, dynamic>)["uid"];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    model.User user = Provider.of<UserProvider>(context).getUser;
     return Scaffold(
         backgroundColor: Colors.blueGrey[800],
         body: Center(
@@ -24,13 +67,13 @@ class UserProfile extends StatelessWidget {
                 children: <Widget>[
                   CircleAvatar(
                     radius: 50,
-                    backgroundImage: NetworkImage(user.photoUrl),
+                    backgroundImage: NetworkImage(photoUrl),
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   Text(
-                    user.username,
+                    username,
                     style: TextStyle(
                       fontSize: 35.0,
                       color: Colors.white,
@@ -43,7 +86,7 @@ class UserProfile extends StatelessWidget {
                   ),
                   Text(
                     textAlign: TextAlign.center,
-                    user.bio,
+                    bio,
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.blueGrey[200],
@@ -63,7 +106,7 @@ class UserProfile extends StatelessWidget {
                   ),
                   Text(
                     textAlign: TextAlign.left,
-                    'Age: ' + user.age,
+                    'Age: ' + age,
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.blueGrey[200],
@@ -76,7 +119,7 @@ class UserProfile extends StatelessWidget {
                   ),
                   Text(
                     textAlign: TextAlign.left,
-                    'Gender: ' + user.gender,
+                    'Gender: ' + gender,
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.blueGrey[200],
@@ -89,7 +132,7 @@ class UserProfile extends StatelessWidget {
                   ),
                   Text(
                     textAlign: TextAlign.left,
-                    'E-mail: ' + user.email,
+                    'E-mail: ' + email,
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.blueGrey[200],
@@ -102,7 +145,7 @@ class UserProfile extends StatelessWidget {
                   ),
                   Text(
                     textAlign: TextAlign.left,
-                    'Budget in Thousands: ' + user.budget,
+                    'Budget in Thousands: ' + budget,
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.blueGrey[200],
@@ -115,7 +158,7 @@ class UserProfile extends StatelessWidget {
                   ),
                   Text(
                     textAlign: TextAlign.left,
-                    'Language: ' + user.language,
+                    'Language: ' + language,
                     style: TextStyle(
                         fontSize: 15,
                         color: Colors.blueGrey[200],
@@ -132,10 +175,17 @@ class UserProfile extends StatelessWidget {
                       primary: Color.fromRGBO(255, 0, 0, 60),
                     ),
                     //textColor: Colors.white,
-                    onPressed: () async {
-                      await FirebaseAuth.instance.signOut();
+                    autofocus: true,
+
+                    onPressed: () {
+                      print(uid21);
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Chat_Screen(uid: uid21),
+                          ));
                     },
-                    child: Text("Signout"),
+                    child: Text('Chat'),
                     //shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
                   ),
                   // we will be creating a new widget name info carrd

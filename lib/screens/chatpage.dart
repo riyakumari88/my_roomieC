@@ -23,7 +23,6 @@ class _Chat_ScreenState extends State<Chat_Screen> {
   String groupChatId = "";
   String currentUserId = "";
   String peerId = "";
-
   generateGroupId() {
     currentUserId = FirebaseAuth.instance.currentUser!.uid;
     peerId = widget.uid;
