@@ -6,6 +6,7 @@ import 'package:flutter_application_1/responsive/responsive_layout.dart';
 import 'package:flutter_application_1/provider/user_provider.dart';
 import 'package:flutter_application_1/screens/addpic.dart';
 import 'package:flutter_application_1/screens/home.dart';
+import 'package:flutter_application_1/screens/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'responsive/mobile_screen_layout.dart';
@@ -76,7 +77,7 @@ class MyApp extends StatelessWidget {
               );
             }
 
-            return const LoginScreen();
+            return const OnBoardingScreen();
           },
         ),
         // ),

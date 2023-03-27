@@ -11,7 +11,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: primaryColor,
+          backgroundColor: Color(0xFFEC994B),
           centerTitle: true,
           title: SvgPicture.asset(
             'assets/logo.svg',

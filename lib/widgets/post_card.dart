@@ -33,6 +33,7 @@ class NextPage extends StatelessWidget {
     //     .get();
     // model.User user1 = model.User.fromSnap(user11 as DocumentSnapshot<Object?>);
     return Container(
+      //color: Color.fromRGBO(115, 119, 123, 1),
       margin: const EdgeInsets.fromLTRB(8, 10, 8, 8),
       // boundary needed for web
       decoration: BoxDecoration(
@@ -48,7 +49,7 @@ class NextPage extends StatelessWidget {
             color: primaryColor,
           ),
           color: primaryColor,
-          borderRadius: BorderRadius.circular(30)),
+          borderRadius: BorderRadius.circular(20)),
       padding: const EdgeInsets.symmetric(
         vertical: 10,
       ),
@@ -176,7 +177,7 @@ class NextPage extends StatelessWidget {
                           ),
                         ),
                         decoration: BoxDecoration(
-                            color: Colors.black,
+                            color: Color.fromRGBO(21, 19, 60, 1),
                             borderRadius: BorderRadius.circular(18),
                             boxShadow: [
                               BoxShadow(

@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
     } else {
       return Scaffold(
         appBar: AppBar(
-          backgroundColor: primaryColor,
+          backgroundColor: Color.fromRGBO(236, 153, 75, 1),
           centerTitle: true,
           title: SvgPicture.asset(
             'assets/logo.svg',
