@@ -111,6 +111,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         )
                       : const Text(
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
                           'Log in',
                         ),
                   // : const CircularProgressIndicator(
@@ -123,7 +126,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(4)),
                     ),
-                    color: blueColor,
+                    color: Colors.black,
                   ),
                 ),
                 // onTap: loginUser,

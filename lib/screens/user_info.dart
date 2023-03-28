@@ -287,7 +287,7 @@ class _UserInformationState extends State<UserInformation> {
                     ElevatedButton(
                       // ignore: prefer_const_constructors
                       style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(25, 0, 255, 0.769),
+                        primary: Color.fromRGBO(115, 119, 123, 1),
                       ),
                       //textColor: Colors.white,
                       autofocus: true,
@@ -300,7 +300,8 @@ class _UserInformationState extends State<UserInformation> {
                               builder: (context) => Chat_Screen(uid: uid21),
                             ));
                       },
-                      child: Text('Chat'),
+                      child:
+                          Text(style: TextStyle(color: Colors.white), 'Chat'),
                     ),
                   ],
                 ),

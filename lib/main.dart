@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'MyRoomie',
         theme: ThemeData(
-          primarySwatch: Colors.purple,
+          primarySwatch: Colors.orange,
         ),
         // home: const ResponsiveLayout(
         //   mobileScreenLayout: MoblieScreenLayout(),

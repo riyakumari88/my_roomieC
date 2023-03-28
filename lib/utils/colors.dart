@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const colorAccent = Color.fromRGBO(255, 139, 19, 1);
+
 const mobileBackgroundColor = Color.fromRGBO(0, 0, 0, 1);
 const webBackgroundColor = Color.fromRGBO(18, 18, 18, 1);
 const mobileSearchColor = Color.fromRGBO(38, 38, 38, 1);

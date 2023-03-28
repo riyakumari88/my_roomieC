@@ -49,9 +49,9 @@ class NextPage extends StatelessWidget {
             color: primaryColor,
           ),
           color: primaryColor,
-          borderRadius: BorderRadius.circular(20)),
+          borderRadius: BorderRadius.circular(15)),
       padding: const EdgeInsets.symmetric(
-        vertical: 10,
+        vertical: 1,
       ),
       child: Column(children: [
         // HEADER SECTION OF THE POST
@@ -63,7 +63,7 @@ class NextPage extends StatelessWidget {
           child: Row(
             children: <Widget>[
               CircleAvatar(
-                radius: 16,
+                radius: 18,
                 backgroundImage: NetworkImage(
                   snap['profImage'],
                 ),
@@ -152,7 +152,7 @@ class NextPage extends StatelessWidget {
                 ),
               ),
               Padding(
-                  padding: const EdgeInsets.only(bottom: 0, top: 250),
+                  padding: const EdgeInsets.only(bottom: 0, top: 260),
                   child: InkWell(
                       onTap: () {
                         Navigator.push(
@@ -170,22 +170,22 @@ class NextPage extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            'Continue',
+                            'View More..',
                             style: TextStyle(
-                              color: Colors.white,
-                            ),
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                         decoration: BoxDecoration(
                             color: Color.fromRGBO(21, 19, 60, 1),
-                            borderRadius: BorderRadius.circular(18),
+                            borderRadius: BorderRadius.circular(12),
                             boxShadow: [
-                              BoxShadow(
-                                color: Colors.white,
-                                spreadRadius: 2,
-                                blurRadius: 20.0,
-                                // spreadRadius: 2.0,
-                              )
+                              // BoxShadow(
+                              //   color: Colors.black,
+                              //   spreadRadius: 1,
+                              //   blurRadius: 10.0,
+                              //   // spreadRadius: 2.0,
+                              // )
                             ]),
                       )))
               // AnimatedOpacity(

@@ -18,7 +18,7 @@ class ChatProvider {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print('onMessage: $message');
       if (message.notification != null) {
-        // showNotification(message.notification!);
+        showNotification(message.notification!);
       }
       return;
     });
@@ -36,14 +36,13 @@ class ChatProvider {
 
   void showNotification(RemoteNotification remoteNotification) async {
     AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails("channel ID", "Affan",
+        const AndroidNotificationDetails("channel ID", "Affan",
             importance: Importance.high);
-    // IOSNotificationDetails iOSPlatformChannelSpecifics =
-    //     IOSNotificationDetails();
+    DarwinNotificationDetails iOSPlatformChannelSpecifics =
+        DarwinNotificationDetails();
     NotificationDetails platformChannelSpecifics = NotificationDetails(
-      android: androidPlatformChannelSpecifics,
-      //iOS: iOSPlatformChannelSpecifics
-    );
+        android: androidPlatformChannelSpecifics,
+        iOS: iOSPlatformChannelSpecifics);
 
     print(remoteNotification);
 
@@ -58,13 +57,11 @@ class ChatProvider {
 
   void configLocalNotification() {
     AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('app_icon');
-    // IOSInitializationSettings initializationSettingsIOS =
-    //     IOSInitializationSettings();
+        const AndroidInitializationSettings('app_icon');
+    DarwinInitializationSettings initializationSettingsIOS =
+        const DarwinInitializationSettings();
     InitializationSettings initializationSettings = InitializationSettings(
-      android: initializationSettingsAndroid,
-      // iOS: initializationSettingsIOS
-    );
+        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
     flutterLocalNotificationsPlugin.initialize(initializationSettings);
   }
 

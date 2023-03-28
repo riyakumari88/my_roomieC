@@ -73,7 +73,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           iconSize: 25,
           height: 70,
           backgroundColor: Colors.white30,
-          activeColor: Colors.black,
+          activeColor: Colors.orangeAccent,
           items: [
             // BottomNavigationBarItem(
             //     icon: Icon(
@@ -86,24 +86,21 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.messenger_rounded,
-                  color:
-                      _page == 0 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                  color: _page == 0 ? colorAccent : secondaryColor,
                 ),
                 label: '',
                 backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.upload_file_rounded,
-                  color:
-                      _page == 1 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                  color: _page == 1 ? colorAccent : secondaryColor,
                 ),
                 label: '',
                 backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person,
-                  color:
-                      _page == 2 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                  color: _page == 2 ? colorAccent : secondaryColor,
                 ),
                 label: '',
                 backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
@@ -129,16 +126,14 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.home,
-                  color:
-                      _page == 0 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                  color: _page == 0 ? colorAccent : secondaryColor,
                 ),
                 label: '',
                 backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.messenger_rounded,
-                  color:
-                      _page == 1 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                  color: _page == 1 ? colorAccent : secondaryColor,
                 ),
                 label: '',
                 backgroundColor: Color.fromRGBO(0, 0, 255, 60)),
@@ -153,8 +148,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
             BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person,
-                  color:
-                      _page == 2 ? Color.fromRGBO(0, 0, 0, 1) : secondaryColor,
+                  color: _page == 2 ? colorAccent : secondaryColor,
                 ),
                 label: '',
                 backgroundColor: Color.fromRGBO(0, 0, 255, 60)),

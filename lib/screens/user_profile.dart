@@ -221,7 +221,7 @@ class _UserProfileState extends State<UserProfile> {
                           child: Icon(Icons.money_off_sharp),
                         ),
                         Text(
-                          'Budget in Thousands: ' + user.budget,
+                          'Rent Expenses: ' + user.budget,
                           style: TextStyle(
                               fontSize: 12,
                               color: Color(0xFF15133C),
@@ -254,7 +254,7 @@ class _UserProfileState extends State<UserProfile> {
                       child: ElevatedButton(
                         // ignore: prefer_const_constructors
                         style: ElevatedButton.styleFrom(
-                          primary: Color.fromRGBO(37, 20, 215, 0.769),
+                          primary: Color.fromRGBO(207, 20, 43, 1),
                         ),
                         //textColor: Colors.white,
                         onPressed: () async {

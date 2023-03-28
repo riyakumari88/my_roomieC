@@ -106,6 +106,7 @@ class _Chat_ScreenState extends State<Chat_Screen> {
       onWillPop: onBackPress,
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFFEC994B),
           automaticallyImplyLeading: false,
           leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
